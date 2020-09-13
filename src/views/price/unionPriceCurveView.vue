@@ -46,7 +46,7 @@
 <script>
   import { unionPriceCurveView } from '@/api/price'
   import { unionPriceCurveViewQuery } from '@/api/price'
-  import { unionPriceCurveViewTaxIdList } from '@api/price'
+  import { unionPriceCurveViewTaxIdList } from '@/api/price'
   export default {
     name: "unionPriceCurveView",
     data() {
