@@ -1,10 +1,10 @@
 import request from '@/utils/request'
 
-export function unionPriceCurveView(data) {
+export function unionPriceCurveView() {
   return request({
     url: '/price/unionPriceCurveView',
     method: 'POST',
-    data
+    data:{}
   })
 }
 export function unionPriceCurveViewQuery(data) {

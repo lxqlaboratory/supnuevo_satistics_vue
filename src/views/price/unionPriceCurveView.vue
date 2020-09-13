@@ -2,7 +2,7 @@
   <div class="app-container">
          <div class="query-container" >
         联盟
-        <el-select v-model.number="unionId" placeholder="请选择联盟"  style="width: 15%;">
+        <el-select v-model.number="unionId" placeholder="请选择联盟"  style="width: 10%;">
           <el-option
             v-for="item in unionList"
             :key="item.unionId"
@@ -11,7 +11,7 @@
           </el-option>
         </el-select>
         商品类型
-        <el-select v-model="taxType" placeholder="请选择商品类型" @change="getTaxIdList()" style="width: 15%;">
+        <el-select v-model="taxType" placeholder="请选择商品类型" @change="getTaxIdList()" style="width: 10%;">
           <el-option
             v-for="item in taxTypeList"
             :key="item.type"
@@ -19,27 +19,34 @@
             :value="item.type" >
           </el-option>
         </el-select>
-        <el-select v-model.number="taxId"  placeholder="请选择种类"  style="width: 15%;">
+        <el-select v-model.number="taxId"  placeholder="请选择种类"  style="width: 10%;">
           <el-option
             v-for="item in taxIdList"
-            :key="item"
-            :label="item"
-            :value="item">
+            :key="item.taxId"
+            :label="item.taxId+'-'+item.taxName"
+            :value="item.taxId">
           </el-option>
         </el-select>
         商品条码
-        <el-select v-model="codigo"  placeholder="请选择商品条码"  style="width: 10%;">
-          <el-option
-            v-for="item in codigoList"
-            :key="item.codigo"
-            :label="item.commodityName"
-            :value="item.codigo">
-          </el-option>
-        </el-select>
+         <el-input v-model="commodityName" placeholder="请输入商品条码"  style="width: 8%;" />
         商品名称
-         <el-input v-model="commodityName" placeholder="请输入商品名称"  style="width: 10%;" />
+         <el-input v-model="commodityName" placeholder="请输入商品名称"  style="width: 8%;" />
+        起止日期
+        <el-date-picker
+          v-model="startDay"
+          type="datetime"
+          value-format="yyyyMMdd"
+          placeholder="选择开始日期">
+        </el-date-picker>
+        <el-date-picker
+          v-model="endDay"
+          type="datetime"
+          value-format="yyyyMMdd"
+          placeholder="选择结束日期">
+        </el-date-picker>
         <el-button  type="primary" @click="doQuery()"  >查询</el-button>
       </div>
+      <div id="myChart" :style="{width: '800px', height: '400px'}"></div>
   </div>
 </template>
 
@@ -56,10 +63,12 @@
       taxId:'',
       codigo: '',
       commodityName: '',
+      startDay:'',
+      endDay:'',
       unionList: [],
       taxTypeList:[],
       taxIdList:[],
-      codigoList: [],
+      priceDays: [],
       dataList: [],
      }
     },
@@ -68,23 +77,40 @@
     },
     methods: {
       fetchData() {
-        unionPriceCurveView({ 'session': document.cookie }).then(res => {
+        unionPriceCurveView().then(res => {
           this.unionList = res.unionList
           this.taxTypeList = res.taxTypeList
           this.taxIdList = res.taxIdList
         })
       },
       getTaxIdList() {
-        unionPriceCurveViewTaxIdList({ 'session': document.cookie, 'taxType': this.taxType}).then(res => {
+        unionPriceCurveViewTaxIdList({ 'taxType': this.taxType}).then(res => {
         this.taxIdList = res.taxIdList
         })
       },
       doQuery() {
-        unionPriceCurveViewQuery({ 'session': document.cookie,'unionId':this.unionId, 'taxType': this.taxType,
-        'taxId':this.taxId, 'codigo': this.codigo, 'commodityName':this.commodityName}).then(res => {
-        this.dataList = res.data
+        unionPriceCurveViewQuery({'unionId':this.unionId, 'taxType': this.taxType,
+        'taxId':this.taxId, 'codigo': this.codigo, 'commodityName':this.commodityName,
+        'startDay':this.startDay, 'endDay': this.endDay}).then(res => {
+          this.priceDays= res.priceDays;
+          this.dataList = res.dataList;
+          this.drawLine();
         })
       },
+      drawLine(){
+          // 基于准备好的dom，初始化echarts实例
+          let myChart = this.$echarts.init(document.getElementById('myChart'))
+          // 绘制图表
+          myChart.setOption({
+            title: { text: '联盟商品价格趋势' },
+            tooltip: {},
+            xAxis: {
+              data: this.priceDays
+            },
+            yAxis: {},
+            series: this.dataList
+          });
+        },
     }
   }
 </script>
