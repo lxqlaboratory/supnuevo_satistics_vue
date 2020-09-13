@@ -21,5 +21,12 @@ export function unionPriceCurveViewTaxIdList(data) {
     data
   })
 }
+export function unionPriceCurveViewCommodityList(data) {
+  return request({
+    url: '/price/unionPriceCurveViewCommodityList',
+    method: 'POST',
+    data
+  })
+}
 
 

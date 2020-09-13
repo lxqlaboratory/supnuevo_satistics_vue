@@ -19,7 +19,7 @@
             :value="item.type" >
           </el-option>
         </el-select>
-        <el-select v-model.number="taxId"  placeholder="请选择种类"  style="width: 10%;">
+        <el-select v-model.number="taxId"  placeholder="请选择种类" @change="getCommodityList()" style="width: 10%;">
           <el-option
             v-for="item in taxIdList"
             :key="item.taxId"
@@ -27,8 +27,14 @@
             :value="item.taxId">
           </el-option>
         </el-select>
-        商品条码
-         <el-input v-model="commodityName" placeholder="请输入商品条码"  style="width: 8%;" />
+        <el-select v-model.number="commodityId"  placeholder="请选择条码"  style="width: 10%;">
+          <el-option
+            v-for="item in commodityList"
+            :key="item.commodityId"
+            :label="item.codigo+'-'+item.commodityName"
+            :value="item.commodityId">
+          </el-option>
+        </el-select>
         商品名称
          <el-input v-model="commodityName" placeholder="请输入商品名称"  style="width: 8%;" />
         起止日期
@@ -46,7 +52,7 @@
         </el-date-picker>
         <el-button  type="primary" @click="doQuery()"  >查询</el-button>
       </div>
-      <div id="myChart" :style="{width: '800px', height: '400px'}"></div>
+      <div id="myChart" :style="{width: '1600px', height: '800px'}"></div>
   </div>
 </template>
 
@@ -54,6 +60,8 @@
   import { unionPriceCurveView } from '@/api/price'
   import { unionPriceCurveViewQuery } from '@/api/price'
   import { unionPriceCurveViewTaxIdList } from '@/api/price'
+  import { unionPriceCurveViewCommodityList } from '@/api/price'
+  
   export default {
     name: "unionPriceCurveView",
     data() {
@@ -61,13 +69,14 @@
       unionId:'',
       taxType: '',
       taxId:'',
-      codigo: '',
+      commodityId: '',
       commodityName: '',
       startDay:'',
       endDay:'',
       unionList: [],
       taxTypeList:[],
       taxIdList:[],
+      commodityList:[],
       priceDays: [],
       dataList: [],
      }
@@ -88,9 +97,14 @@
         this.taxIdList = res.taxIdList
         })
       },
+      getCommodityList() {
+        unionPriceCurveViewCommodityList({  'unionId': this.unionId,'taxId': this.taxId}).then(res => {
+        this.commodityList = res.commodityList
+        })
+      },
       doQuery() {
         unionPriceCurveViewQuery({'unionId':this.unionId, 'taxType': this.taxType,
-        'taxId':this.taxId, 'codigo': this.codigo, 'commodityName':this.commodityName,
+        'taxId':this.taxId, 'commodityId': this.commodityId, 'commodityName':this.commodityName,
         'startDay':this.startDay, 'endDay': this.endDay}).then(res => {
           this.priceDays= res.priceDays;
           this.dataList = res.dataList;
