@@ -59,21 +59,62 @@ export const constantRoutes = [
     component: Layout,
     name: 'base',
     meta: {
-      title: '基本信息',
+      title: '交易查询',
       icon: 'example'
     },
     children: [
       {
-        path: 'baseInformation',
-        name: 'baseInformation',
-        component: () => import('@/views/base/baseInformation'),
-        meta: { title: 'echart测试', icon: 'user' }
+        path: 'unionTradeQuery',
+        name: 'unionTradeQuery',
+        component: () => import('@/views/trade/unionTradeQuery'),
+        meta: { title: '交易量查询', icon: 'user' }
       },
       {
-      path: 'modefiypassword',
-      name: 'modefiypassword',
-      component: () => import('@/views/base/modefiypassword'),
-      meta: { title: '修改密码', icon: 'password' }
+      path: 'unionTradeQueryDay',
+      name: 'unionTradeQueryDay',
+      component: () => import('@/views/trade/unionTradeQueryDay'),
+      meta: { title: '天交易量统计', icon: 'password' }
+    },
+    {
+      path: 'unionTradeQueryWeek',
+      name: 'unionTradeQueryweek',
+      component: () => import('@/views/trade/unionTradeQueryWeek'),
+      meta: { title: '周交易量统计', icon: 'password' }
+    },
+    {
+      path: 'unionTradeQueryMonth',
+      name: 'unionTradeQueryMonth',
+      component: () => import('@/views/trade/unionTradeQueryMonth'),
+      meta: { title: '月天交易量统计', icon: 'password' }
+    },
+    {
+      path: 'unionTradeQueryYear',
+      name: 'unionTradeQueryYear',
+      component: () => import('@/views/trade/unionTradeQueryYear'),
+      meta: { title: '年交易量统计', icon: 'password' }
+    }
+   ]
+  },
+  {
+    path: '/base',
+    component: Layout,
+    name: 'base',
+    meta: {
+      title: '价格查询',
+      icon: 'example'
+    },
+    children: [
+      {
+        path: 'unionPriceCurveView',
+        name: 'unionPriceCurveView',
+        component: () => import('@/views/price/unionPriceCurveView'),
+        meta: { title: '联盟价格曲线', icon: 'user' }
+      },
+      {
+      path: 'unionPriceMerchantTime',
+      name: 'unionPriceMerchantTime',
+      component: () => import('@/views/price/unionPriceMerchantTime'),
+      meta: { title: '价格时间查询', icon: 'password' }
     }]
     // meta: { title: '首页', icon: 'dashboard',roles: ['18'] }
   },
