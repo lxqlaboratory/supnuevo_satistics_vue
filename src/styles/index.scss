@@ -1,0 +1,227 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+// main-container global css
+.app-container {
+  padding: 30px;
+}
+
+//条件查询搜索
+.query-container{
+  font-size: 15px;
+  text-align: center;
+  .el-button{
+    margin-bottom: 2px!important;
+    padding-bottom: 5px;
+    padding-top: 9px;
+    padding-right: 6px;
+    padding-left: 6px;
+    text-align: center;
+  }
+  .el-input__inner{
+    border:  1px solid rgb(64,158,255);
+  }
+}
+
+.content {
+  width:100%;
+  border-top: 1px solid #336699;
+  border-left: 1px solid #336699;
+  border-spacing: 0;/*去掉单元格间隙*/
+  margin-top: 5px;
+  margin-bottom: 5px;
+  .el-input__inner{
+    border: none !important;
+  }
+}
+.content tr {
+  width : 100% !important;
+}
+.content td {
+  padding: 2px 2px;
+  border-bottom: 1px solid #336699;
+  border-right: 1px solid #336699;
+  text-align: center;
+  font-size: 14px;
+  height: 33px;
+}
+
+
+//表格标题
+.table-headline{
+  margin-top: 3px;
+  .el-table{
+    margin-top: 0px !important;
+  }
+}
+
+.headline{
+  width:100%;
+  border-top: 1px solid #336699;
+  border-left: 1px solid #336699;
+  border-right: 1px solid #336699;
+  line-height: 25px;
+  text-align: center;
+}
+.headline tr {
+  width : 100% ;
+}
+.headline td {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+//输入框
+.el-input__inner{
+  background-color:transparent;
+  height: 28px!important;
+  color: #000000;
+  line-height: 28px!important;
+  width: 100%;
+}
+//日期选择器
+.distpicker-address-wrapper select{
+  padding: 1px .75rem!important;
+  height: 28px!important;
+  font-size: 15px!important;
+  background-color: #fff;
+  background-image: none;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: .25rem;
+  background-color:transparent!important;
+}
+
+
+//按钮
+.el-button {
+  background-color:transparent;
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 7px 10px;
+  color:  #336699;
+  margin-left: 0px !important;
+}
+
+//表格
+.el-table{
+  margin-top: 6px;
+  margin-bottom: 6px;
+  border: 1px solid #336699;
+}
+.el-table thead {
+  color: rgb(0,0,0) !important;
+  font-size: 14px;
+}
+.el-table td,
+.el-table th.is-leaf{
+  border-bottom: 1px solid #336699;
+  border-right:1px solid #336699;
+  color: #333333;
+  background-color: rgb(226,242,255) !important;
+}
+.el-table--striped .el-table__body tr.hover-row.el-table__row--striped > td,
+.el-table__body tr.hover-row > td {
+  background-color: rgb(198,235,222) !important;
+}
+.el-table__empty-block{
+  height: 36px!important;
+  min-height: 36px!important;
+  background-color: rgb(226,242,255) !important;
+}
+.el-table__empty-text {
+  line-height: 30px;
+  width: 50%;
+  color: #333333!important;
+}
+
+//表单
+.el-form-item__label{
+  font-weight: normal !important;
+}
+
+//消息
+.el-message-box{
+  border: 1px solid #333333;
+}
+.el-message--success{
+  height: 120px;
+  font-size: 50px;
+  background-color: rgb(236,245,255);
+}
+.el-message__content{
+  color: #333333 !important;
+  font-size: 15px;
+}
+.el-message--error{
+  height: 120px;
+  font-size: 50px;
+  background-color: rgb(236,245,255);
+}
+
+.el-form-item__label {
+  text-align: center;
+}
+.el-form-item {
+  margin-bottom: 0px;
+}
