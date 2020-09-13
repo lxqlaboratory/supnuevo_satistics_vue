@@ -67,7 +67,7 @@ export const constantRoutes = [
         path: 'baseInformation',
         name: 'baseInformation',
         component: () => import('@/views/base/baseInformation'),
-        meta: { title: '个人信息', icon: 'user' }
+        meta: { title: 'echart测试', icon: 'user' }
       },
       {
       path: 'modefiypassword',

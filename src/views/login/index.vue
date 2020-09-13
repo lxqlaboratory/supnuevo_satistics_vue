@@ -5,7 +5,7 @@
 
       <!--标题图-->
       <!--能源动力-->
-      <img style="width: 300px;height: 50px;" src="/vue/login/rjxyTitle.png">
+      <img style="width: 300px;height: 50px;" src="/vue/login/name.png">
       <!--软件-->
       <!--<img style="width: 350px;height: 82px;" src="http://www.sc.sdu.edu.cn/images/logo.png">-->
 
@@ -56,7 +56,7 @@
       <div>
         <!--背景更换-->
         <!--能源动力-->
-        <img class="bgflux" src="/vue/login/rjxyBackground.jpg">
+        <img class="bgflux" src="/vue/login/backgroud.png">
         <!--软件-->
         <!--<img class="bgflux" src="@/assets/login/rjxyBackground.jpg">-->
       </div>
