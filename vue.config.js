@@ -25,7 +25,7 @@ module.exports = {
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
   publicPath: '/vue',
-  outputDir: '/dev/tomcat8/webapps/ROOT/vue',
+  outputDir: 'D:/vue',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
@@ -42,7 +42,8 @@ module.exports = {
 
       [process.env.VUE_APP_BASE_API]: {
         ws: false,
-        target: `http://localhost:8080/func/`,
+        // target: `http://localhost:8080/func/`,
+        target: `http://144.217.157.53:9080/func/`,
         changeOrigin: true,
         pathRewrite: {
           [process.env.VUE_APP_BASE_API]: '/'
