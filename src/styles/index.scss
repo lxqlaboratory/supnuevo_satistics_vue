@@ -162,7 +162,14 @@ div:focus {
   color:  #336699;
   margin-left: 0px !important;
 }
-
+.el-input__icon {
+  height: 120%;
+  width: 25px;
+  text-align: center;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  line-height: 40px;
+}
 //表格
 .el-table{
   margin-top: 6px;

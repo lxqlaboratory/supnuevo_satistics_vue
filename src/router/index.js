@@ -63,6 +63,12 @@ export const constantRoutes = [
       icon: 'example'
     },
     children: [
+      // {
+      //   path: 'updateTradeData',
+      //   name: 'updateTradeData',
+      //   component: () => import('@/views/trade/updateTradeData'),
+      //   meta: { title: '更新交易数据', icon: 'user' }
+      // },
       {
         path: 'unionTradeQuery',
         name: 'unionTradeQuery',
