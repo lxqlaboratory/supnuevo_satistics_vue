@@ -1,9 +1,12 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
+import gsetting from '../api/globalVariable'
 axios.defaults.withCredentials = true
+axios.defaults.adapter = require('axios/lib/adapters/http');
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
+  // baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
+  baseURL: gsetting.servicePort + '/func/',
   withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000, // request timeout
   headers: {

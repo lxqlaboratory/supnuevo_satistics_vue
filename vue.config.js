@@ -24,8 +24,8 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: '/vue',
-  outputDir: 'D:/vue',
+  // publicPath: '/vue',
+  // outputDir: 'D:/vue',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
@@ -35,7 +35,7 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
-    },
+    }/*,
     proxy: {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
@@ -51,6 +51,7 @@ module.exports = {
 
       }
     }
+    */
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
