@@ -14,14 +14,14 @@
       <el-date-picker
         v-model="startDay"
         type="date"
-        value-format="yyyy-MM-dd"
+        value-format="yyyyMMdd"
         placeholder="选择开始日期"
       />
       <el-date-picker
         style="margin-left: 20px"
         v-model="endDay"
         type="date"
-        value-format="yyyy-MM-dd"
+        value-format="yyyyMMdd"
         placeholder="选择结束日期"
       />
       <el-button type="primary" @click="doQuery()">查询</el-button>
